@@ -6,7 +6,7 @@ as putting a front end HTTP cache such as Varnish is much more appropriate.  How
 that this solution works quite well to reduce response time for incoming API requests.  The premise
 is fairly simple.  We cache the entire serialized response for a period of time.  When new requests
 come in we check the cache for an existing computed key and if found return that serialized response.  Due
-to caching the serialized response, several methods inside the Resource object had to be over ridden.
+to caching the serialized response, several methods inside the Resource object had to be overridden.
 
 
 ### Installation
@@ -31,3 +31,8 @@ caching you'll need to set this to True.
 	API_CACHE_LENGTH = 900
 	
 This setting dictates the length of the cache. By default its set to 900.
+
+### Authors
+
+- Derek Stegelman https://github.com/dstegelman
+- Garrett Pennington https://github.com/gpennington

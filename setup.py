@@ -7,7 +7,7 @@ setup(
     include_package_data=True,
     url='http://github.com/dstegelman/django-tastypie-cache',
     license='MIT',
-    author='Derek Stegelman',
+    author='Derek Stegelman, Garrett Pennington',
     author_email='email@stegelman.com',
     description='Cache mixin for Django Tastypie',
     classifiers=[
