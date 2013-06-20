@@ -19,6 +19,9 @@ Import the cache mixin and inherit it before the Resource
 
 	class EventResource(CachedResource, Resource):
 	
+This cache mixin utilizes the Django specific settings for caching.  You'll
+need to set that up as well to begin using it.
+	
 ### Settings
 
 There are two settings used in this mixin.  
