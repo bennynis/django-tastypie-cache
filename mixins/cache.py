@@ -112,7 +112,7 @@ class CachedResource(object):
         is a format that we have cache support
         for.
         """
-        if not request.GET.get('format') in self.valid_cache_formats and not settings.TASTYPIE_DEFAULT_FORMATS:
+        if not request.GET.get('format'):
             return False
         return True
 
