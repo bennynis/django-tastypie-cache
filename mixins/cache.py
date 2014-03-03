@@ -112,9 +112,7 @@ class CachedResource(object):
         is a format that we have cache support
         for.
         """
-        if not request.GET.get('format'):
-            return False
-        return True
+        return request.GET.get('format') in self.valid_cache_formats
 
     def _get_valid_content_type(self, format):
         """ Return the proper content type for the given
