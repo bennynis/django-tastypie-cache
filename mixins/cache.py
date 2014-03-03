@@ -112,9 +112,7 @@ class CachedResource(object):
         is a format that we have cache support
         for.
         """
-        if not request.GET.get('format') in self.valid_cache_formats:
-            return False
-        return True
+        return request.GET.get('format') in self.valid_cache_formats
 
     def _get_valid_content_type(self, format):
         """ Return the proper content type for the given
@@ -160,7 +158,10 @@ class CachedResource(object):
 
             response_format = request.GET.get('format', None)
             if response_format is None:
-                raise InvalidFilterError(u'Format is required.')
+                if settings.TASTYPIE_DEFAULT_FORMATS:
+                    response_format = settings.TASTYPIE_DEFAULT_FORMATS[0]
+                else:
+                    raise InvalidFilterError(u'Format is required.')
             data = self.get_cache(request, force_jsonp=self.is_jsonp(request))
             if data:
                 if self.is_jsonp(request):
