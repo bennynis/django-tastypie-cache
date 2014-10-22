@@ -164,6 +164,10 @@ class CachedResource(object):
                     raise InvalidFilterError(u'Format is required.')
             data = self.get_cache(request, force_jsonp=self.is_jsonp(request))
             if data:
+                self.is_authenticated(request)
+                self.throttle_check(request)
+                self.method_check(request, allowed = self._meta.allowed_methods)
+
                 if self.is_jsonp(request):
                     data = self.wrap_json_response(request, data)
                 # If the request is a valid cache format, return it.
